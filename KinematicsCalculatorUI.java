@@ -16,12 +16,12 @@ public class KinematicsCalculatorUI {
     private KinematicsResultPanel resultPanel;
 
     public void createAndShowGUI() {
-        //interface gráfica
+        // configura interface gráfica
         frame = new JFrame("Calculadora Cinemática");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridLayout(0, 2));
 
-        //elementos da interface gráfica
+        // interface gráfica
         velocityField = new JTextField();
         velocityUnitComboBox = new JComboBox<>(new String[]{"m/s", "km/h", "ft/s", "mi/h"});
         launchAngleField = new JTextField();
@@ -73,13 +73,14 @@ public class KinematicsCalculatorUI {
 
             double result = KinematicsCalculator.calculate(velocity, launchAngle, initialHeight, flightTime);
 
-            resultPanel.displayResult(result);
+            resultPanel.displayResult(result, velocityUnitComboBox.getSelectedItem().toString());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(frame, "Por favor, insira números válidos.");
         } catch (IllegalArgumentException e) {
             resultPanel.displayError(e.getMessage());
         }
     }
+
     private double convertToMetersPerSecond(double value, String unit) {
         switch (unit) {
             case "m/s":
@@ -134,12 +135,12 @@ public class KinematicsCalculatorUI {
             case "minutos":
                 return value * 60;
             case "min/seg":
-                // tempo = mm:ss
+                //formato mm:ss
                 String stringValue = Double.toString(value);
                 String[] parts = stringValue.split(":");
                 return Double.parseDouble(parts[0]) * 60 + Double.parseDouble(parts[1]);
             case "h/m/s":
-                //tempo = hh:mm:ss
+                // formato hh:mm:ss
                 String stringValue2 = Double.toString(value);
                 String[] parts2 = stringValue2.split(":");
                 return Double.parseDouble(parts2[0]) * 3600 + Double.parseDouble(parts2[1]) * 60 + Double.parseDouble(parts2[2]);
