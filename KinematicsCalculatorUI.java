@@ -16,12 +16,12 @@ public class KinematicsCalculatorUI {
     private KinematicsResultPanel resultPanel;
 
     public void createAndShowGUI() {
-        // Configurar a interface gráfica
+        //interface gráfica
         frame = new JFrame("Calculadora Cinemática");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new GridLayout(0, 2));
 
-        // Adicionar elementos à interface gráfica
+        //elementos da interface gráfica
         velocityField = new JTextField();
         velocityUnitComboBox = new JComboBox<>(new String[]{"m/s", "km/h", "ft/s", "mi/h"});
         launchAngleField = new JTextField();
@@ -134,12 +134,12 @@ public class KinematicsCalculatorUI {
             case "minutos":
                 return value * 60;
             case "min/seg":
-                // Considerando formato mm:ss
+                // tempo = mm:ss
                 String stringValue = Double.toString(value);
                 String[] parts = stringValue.split(":");
                 return Double.parseDouble(parts[0]) * 60 + Double.parseDouble(parts[1]);
             case "h/m/s":
-                // Considerando formato hh:mm:ss
+                //tempo = hh:mm:ss
                 String stringValue2 = Double.toString(value);
                 String[] parts2 = stringValue2.split(":");
                 return Double.parseDouble(parts2[0]) * 3600 + Double.parseDouble(parts2[1]) * 60 + Double.parseDouble(parts2[2]);
