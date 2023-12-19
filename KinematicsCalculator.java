@@ -9,7 +9,7 @@ public class KinematicsCalculator {
         }
 
         double timeInAir = flightTime;
-        double gravity = 9.8; // Aceleração devido à gravidade em m/s² (pode ser ajustada conforme necessário)
+        double gravity = 9.8; // gravidade
 
         if (launchAngle == 0) {
             return calculate1D(velocity, timeInAir);
